@@ -1,0 +1,41 @@
+@import "../../../../scss/catCard.scss";
+
+.ui.card.cat-card-wrapper {
+    width: 60%;
+    min-width: 300px;
+
+    max-width: $max-value-avaliable-for-cat-card;
+}
+
+.image-wrapper {
+
+    position: relative;
+    width: 100%;
+    min-width: $min-value-avaliable-for-cat-card;
+    min-height: $min-value-avaliable-for-cat-card;
+
+    max-width: $max-value-avaliable-for-cat-card;
+    max-height: $max-value-avaliable-for-cat-card;
+
+    .expand-icon {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        min-width: $min-value-avaliable-for-cat-card;
+        min-height: $min-value-avaliable-for-cat-card;
+
+        max-width: $max-value-avaliable-for-cat-card;
+        max-height: $max-value-avaliable-for-cat-card;
+    
+    }
+}
+
+.button.primary-buttom {
+    width: 100%;
+}
