@@ -1,0 +1,7 @@
+@import "../../../../scss/Card.scss";
+
+
+.ui.card.signup-card-wrapper {
+
+    @include card-wrapper;
+}

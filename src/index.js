@@ -12,9 +12,11 @@ import ReduxThunk from 'redux-thunk';
 
 //reducers
 import catReducer from './store/cat/catReducer';
+import userReducer from './store/user/userReducer';
 
 const rootReducer = combineReducers({
-  cat: catReducer
+  cat: catReducer,
+  user: userReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk))
