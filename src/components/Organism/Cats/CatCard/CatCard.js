@@ -16,11 +16,7 @@ const CatCard = () => {
     const dispatch = useDispatch();
 
 
-    useEffect(() => {
-
-        dispatch(catActions.setCat());
-
-    }, [dispatch]);
+    useEffect(() => dispatch(catActions.setCat()) , [dispatch]);
 
 
 
