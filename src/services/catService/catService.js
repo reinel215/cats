@@ -1,5 +1,5 @@
 import API from '../../config/API/API';
-import FIREBASE_API from '../../config/API/FIREBASE_API';
+import firebaseDB from '../../config/Firebase/firebase.config';
 
 
 
@@ -13,14 +13,15 @@ export const getCat = async () => {
 
 
 
-export const saveCat = async (cat_url) => {
+export const saveCat = async (cat_url, uid) => {
+    
+    const catsCollection = firebaseDB.firestore().collection("cats")
 
-    let cat = {
-        url : cat_url
-    }
-    console.log(cat_url);
-    const response = await FIREBASE_API.post("cat.json", cat );
-    console.log(response);
-    return response.data;
 
+    const response = await catsCollection.add({
+        url: cat_url,
+        user: uid
+    })
+
+    return response.id
 }

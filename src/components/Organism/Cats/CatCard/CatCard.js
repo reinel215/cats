@@ -13,12 +13,11 @@ const CatCard = () => {
 
     const [expand, setExpand] = useState(false);
     const cat = useSelector(state => state.cat);
+    const user = useSelector(state => state.user)
     const dispatch = useDispatch();
 
 
     useEffect(() => dispatch(catActions.setCat()) , [dispatch]);
-
-
 
 
     return (
@@ -76,7 +75,7 @@ const CatCard = () => {
                                         color="purple"
                                         className="primary-buttom"
                                         disabled={cat.loading}
-                                        onClick={() => dispatch(catActions.saveCat(cat.cat.url))}
+                                        onClick={() => dispatch(catActions.saveCat(cat.cat.url, user.user.uid))}
                                     >
                                         Guardar gato
                                     </Button>

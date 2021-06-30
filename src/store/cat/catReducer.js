@@ -20,10 +20,6 @@ const catReducer = (state = initialState, { type, payload }) => {
         case CAT_STARTED:
             return {
                 ...state,
-                cat: {
-                    ...state.cat,
-                    url: ""
-                },
                 loading: true,
                 error: null
             }

@@ -47,7 +47,7 @@ export const setCat = () => {
 
 
 
-export const saveCat = (catURL) => {
+export const saveCat = (catURL, uid) => {
 
     return async dispatch => {
         try {
@@ -56,7 +56,7 @@ export const saveCat = (catURL) => {
                 type: CAT_STARTED
             })
 
-            await addCat(catURL);
+            await addCat(catURL, uid);
 
             dispatch({
                 type: CAT_SAVE,
