@@ -3,7 +3,9 @@ import {
     USER_START,
     USER_ERROR,
     REGISTER_USER,
-    SIGNIN_USER
+    SIGNIN_USER,
+    SIGNOUT_USER,
+    SET_USER
 } from './userTypes';
 
 
@@ -12,9 +14,9 @@ export const signup = (user, callback) => {
     return async dispatch => {
 
         try {
-            
+
             dispatch({
-                type : USER_START
+                type: USER_START
             })
 
             await userService.registerUser(user);
@@ -49,9 +51,9 @@ export const signin = (credentials, callback) => {
     return async dispatch => {
 
         try {
-            
+
             dispatch({
-                type : USER_START
+                type: USER_START
             })
 
             const user = await userService.signinUser(credentials);
@@ -65,7 +67,7 @@ export const signin = (credentials, callback) => {
 
             callback()
 
-        } catch (error) {            
+        } catch (error) {
             dispatch({
                 type: USER_ERROR,
                 payload: {
@@ -79,4 +81,45 @@ export const signin = (credentials, callback) => {
     }
 
 
+}
+
+
+
+export const signout = (callback) => {
+    return async dispatch => {
+        try {
+            dispatch({
+                type: USER_START
+            })
+
+            await userService.signoutUser();
+
+            dispatch({
+                type: SIGNOUT_USER
+            })
+
+            callback();
+
+        } catch (error) {
+            dispatch({
+                type: USER_ERROR,
+                payload: {
+                    error: error.message
+                }
+            })
+        }
+    }
+}
+
+
+
+
+
+export const setUser = (user) => {
+    return {
+        type: SET_USER,
+        payload: {
+            user
+        }
+    }
 }

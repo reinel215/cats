@@ -4,16 +4,21 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-d
 import 'semantic-ui-css/semantic.min.css'
 
 import PrivateRoute from './components/Organism/PrivateRoute/PrivateRoute';
-
 import Cat from './components/Screen/Cat';
 import Signup from './components/Screen/Signup';
 import Signin from './components/Screen/Signin';
 import "./App.scss";
+import useSearchUser from './hooks/useSearchUser';
 
 
 
 function App() {
 
+  const isSearching = useSearchUser();
+
+  if (isSearching) {
+    return <div style={{color: "white"}} >Loading...</div>
+  }
 
   return (
     <Router>

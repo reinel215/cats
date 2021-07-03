@@ -16,3 +16,13 @@ export const signinUser = async ({email, password}) => {
     return response.user;
 
 }
+
+
+
+
+export const signoutUser = async () => {
+
+    const response = await firebaseDB.auth().signOut();
+    return response;
+
+}

@@ -2,7 +2,9 @@ import {
     USER_START,
     USER_ERROR,
     REGISTER_USER,
-    SIGNIN_USER
+    SIGNIN_USER,
+    SIGNOUT_USER,
+    SET_USER
 } from './userTypes';
 
 const initialState = {
@@ -43,6 +45,19 @@ const userReducer = (state = initialState, { type, payload }) => {
                 ...payload,
                 error: null,
                 loading : false
+            }
+
+        case SIGNOUT_USER:
+            return {
+                ...state,
+                error: null,
+                loading: false
+            }
+
+        case SET_USER:
+            return {
+                ...state,
+                ...payload
             }
 
         default:
