@@ -1,12 +1,18 @@
 import {
     getCat,
-    saveCat as addCat
+    saveCat as addCat,
+    deleteCat
 } from '../../services/catService/catService';
+
+import * as userActions from '../user/userActions';
+
 import {
     CAT_STARTED,
     CAT_ERROR,
     SET_CAT,
-    CAT_SAVE
+    CAT_SAVE,
+    DELETE_CAT,
+    CAT_START_SEARCHING,
 } from './catTypes';
 
 
@@ -17,7 +23,7 @@ export const setCat = () => {
         try {
 
             dispatch({
-                type: CAT_STARTED
+                type: CAT_START_SEARCHING
             })
 
             const cat = await getCat();
@@ -62,6 +68,8 @@ export const saveCat = (catURL, uid) => {
                 type: CAT_SAVE,
             })
 
+            dispatch(userActions.getCats(uid))
+
         } catch (error) {
 
             console.log(error);
@@ -73,6 +81,44 @@ export const saveCat = (catURL, uid) => {
             })
 
         }
+    }
+
+}
+
+
+export const removeCatFromUser = (catId, uid) => {
+
+    return async dispatch => {
+
+
+        try {
+
+            dispatch({
+                type: CAT_STARTED
+            })
+
+            await deleteCat(catId);
+
+
+            //change this action later
+            dispatch({
+                type: DELETE_CAT
+            })
+
+            dispatch(userActions.getCats(uid))
+
+
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: CAT_ERROR,
+                payload: {
+                    error
+                }
+            })
+        }
+
+
     }
 
 }

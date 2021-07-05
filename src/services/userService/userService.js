@@ -26,3 +26,28 @@ export const signoutUser = async () => {
     return response;
 
 }
+
+
+
+
+export const getUserCats = async (uid) => {
+
+    const catsCollection = firebaseDB.firestore().collection("cats")
+
+    const usercats = await catsCollection.where("user", "==", uid).get();
+
+    const cats = []
+
+    usercats.forEach(doc => {
+        let newCat = {
+            data : doc.data(),
+            id: doc.id
+        }
+        
+        cats.push(newCat);
+    
+    })
+
+    return cats;
+
+}

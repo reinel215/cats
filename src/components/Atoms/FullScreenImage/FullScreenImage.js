@@ -16,7 +16,7 @@ const FullScreenImage = ({ imageURL = "", onCompress, open = false }) => {
 
                 <div className="fullscreen-image-wrapper" >
                     <Image src={imageURL} wrapped ui={false} />
-                    <Icon onClick={onCompress} className="compress-icon" size="big" name="compress" link />
+                    <Icon circular inverted onClick={onCompress} className="compress-icon" size="big" name="compress" link />
 
                 </div>
 

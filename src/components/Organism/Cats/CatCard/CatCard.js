@@ -17,7 +17,7 @@ const CatCard = () => {
     const dispatch = useDispatch();
 
 
-    useEffect(() => dispatch(catActions.setCat()) , [dispatch]);
+    useEffect(() => dispatch(catActions.setCat()), [dispatch]);
 
 
     return (
@@ -33,10 +33,10 @@ const CatCard = () => {
                 <Card className="cat-card-wrapper">
 
                     {
-                        cat.cat.url ?
+                        cat.cat.url && !cat.searchingCat ?
                             <div className="image-wrapper" >
                                 <Image src={API_URL + cat.cat.url} wrapped ui={false} />
-                                <Icon className="expand-icon" onClick={() => setExpand(true)} name="expand" link />
+                                <Icon circular inverted className="expand-icon" onClick={() => setExpand(true)} name="expand" link />
                             </div>
                             :
                             <div style={{ width: 300, height: 300 }} ></div>

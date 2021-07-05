@@ -2,14 +2,19 @@ import {
     CAT_STARTED,
     CAT_ERROR,
     SET_CAT,
-    CAT_SAVE
+    CAT_SAVE,
+    DELETE_CAT,
+    CAT_START_SEARCHING,
+    CAT_END_SEARCHING
 } from './catTypes';
 
 const initialState = {
 
     cat: {},
     error: null,
-    loading: false
+    loading: false,
+    searchingCat: false,
+    userCats: null
 
 }
 
@@ -32,7 +37,7 @@ const catReducer = (state = initialState, { type, payload }) => {
         case SET_CAT:
             return {
                 ...state,
-                loading: false,
+                searchingCat: false,
                 cat: payload.cat
             }
 
@@ -41,6 +46,19 @@ const catReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 loading: false,
                 error: null
+            }
+
+        case DELETE_CAT:
+            return {
+                ...state,
+                loading: false,
+                error: null
+            }
+
+        case CAT_START_SEARCHING:
+            return {
+                ...state,
+                searchingCat : true
             }
 
         default:

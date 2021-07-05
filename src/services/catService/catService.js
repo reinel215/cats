@@ -14,7 +14,7 @@ export const getCat = async () => {
 
 
 export const saveCat = async (cat_url, uid) => {
-    
+
     const catsCollection = firebaseDB.firestore().collection("cats")
 
 
@@ -24,4 +24,17 @@ export const saveCat = async (cat_url, uid) => {
     })
 
     return response.id
+}
+
+
+
+export const deleteCat = async (catUid) => {
+
+    const catsCollection = firebaseDB.firestore().collection("cats")
+
+    const deleteResponse = await catsCollection.doc(catUid).delete()
+
+    console.log(deleteResponse)
+
+    return deleteResponse;
 }

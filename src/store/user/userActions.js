@@ -5,7 +5,8 @@ import {
     REGISTER_USER,
     SIGNIN_USER,
     SIGNOUT_USER,
-    SET_USER
+    SET_USER,
+    GET_USER_CATS
 } from './userTypes';
 
 
@@ -121,5 +122,41 @@ export const setUser = (user) => {
         payload: {
             user
         }
+    }
+}
+
+
+
+
+export const getCats = (uid) => {
+    return async dispatch => {
+
+        try {
+
+            dispatch({
+                type: USER_START
+            })
+
+            const cats = await userService.getUserCats(uid);
+
+            //change this action later
+            dispatch({
+                type: GET_USER_CATS,
+                payload: {
+                    cats
+                }
+            })
+
+
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: USER_ERROR,
+                payload: {
+                    error
+                }
+            })
+        }
+
     }
 }
