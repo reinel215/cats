@@ -5,7 +5,6 @@ import {
     CAT_SAVE,
     DELETE_CAT,
     CAT_START_SEARCHING,
-    CAT_END_SEARCHING
 } from './catTypes';
 
 const initialState = {
